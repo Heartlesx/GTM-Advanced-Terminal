@@ -1,0 +1,12 @@
+.gradle/
+build/
+libs/
+run/
+run-server/
+_ref/
+mods/
+mods输出/
+*.jar
+*.zip
+!gradle-wrapper.jar
+CONVERSATION_HANDOFF*.md

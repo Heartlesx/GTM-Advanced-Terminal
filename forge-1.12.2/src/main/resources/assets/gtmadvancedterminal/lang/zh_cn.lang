@@ -1,0 +1,13 @@
+metaitem.advanced_terminal.name=高级终端
+item.gtmadvancedterminal.advanced_terminal.tooltip.usage=潜行右键多方块控制器：自动建造；右键空中：打开设置界面
+item.gtmadvancedterminal.advanced_terminal.setting.title=高级终端设置
+item.gtmadvancedterminal.advanced_terminal.setting.1=线圈等级
+item.gtmadvancedterminal.advanced_terminal.setting.2=重复结构次数
+item.gtmadvancedterminal.advanced_terminal.setting.3=无仓室模式
+item.gtmadvancedterminal.advanced_terminal.setting.4=线圈替换模式
+item.gtmadvancedterminal.advanced_terminal.setting.5=使用AE物品
+item.gtmadvancedterminal.advanced_terminal.setting.6=附属结构数量
+item.gtmadvancedterminal.advanced_terminal.setting.7=镜像模式
+message.gtmadvancedterminal.mirror_unsupported=镜像模式：该机器不支持镜像布局，已按普通布局建造。
+message.gtmadvancedterminal.mirror_formed=镜像模式：机器已成型，需先拆除才能按镜像布局建造。
+message.gtmadvancedterminal.missing_material=自动建造中止：背包里缺少建造材料（例如 %s），或开启「使用AE物品」从AE网络取用。

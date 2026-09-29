@@ -1,0 +1,13 @@
+metaitem.advanced_terminal.name=Advanced Terminal
+item.gtmadvancedterminal.advanced_terminal.tooltip.usage=Sneak-right-click a multiblock controller to auto-build; right-click in air to open settings
+item.gtmadvancedterminal.advanced_terminal.setting.title=Advanced Terminal Settings
+item.gtmadvancedterminal.advanced_terminal.setting.1=Coil Tier
+item.gtmadvancedterminal.advanced_terminal.setting.2=Structure Repeat Count
+item.gtmadvancedterminal.advanced_terminal.setting.3=No Hatch Mode
+item.gtmadvancedterminal.advanced_terminal.setting.4=Replace Coil Mode
+item.gtmadvancedterminal.advanced_terminal.setting.5=Use AE Items
+item.gtmadvancedterminal.advanced_terminal.setting.6=Additional Structure Count
+item.gtmadvancedterminal.advanced_terminal.setting.7=Mirror Mode
+message.gtmadvancedterminal.mirror_unsupported=Mirror mode: this machine does not allow a mirrored layout; built in the normal layout instead.
+message.gtmadvancedterminal.mirror_formed=Mirror mode: the machine is already formed; remove it first to build the mirrored layout.
+message.gtmadvancedterminal.missing_material=Auto-build stopped: missing building material (e.g. %s) in your inventory, or enable "Use AE Items" to pull from your ME network.

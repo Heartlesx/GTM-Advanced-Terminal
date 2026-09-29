@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["SGS", "PBP", "PWP"],
+  "key": {
+    "S": {"type": "forge:ore_dict", "ore": "screwSteel"},
+    "G": {"type": "forge:ore_dict", "ore": "paneGlass"},
+    "B": {"item": "minecraft:book"},
+    "P": {"type": "forge:ore_dict", "ore": "plateSteel"},
+    "W": {"type": "forge:ore_dict", "ore": "wireGtSingleTin"}
+  },
+  "result": {"item": "gtmadvancedterminal:meta_item", "data": 32000, "count": 1}
+}

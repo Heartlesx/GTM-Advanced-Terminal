@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "gtmadvancedterminal",
+    "name": "GTM Advanced Terminal",
+    "description": "Advanced multiblock terminal for GTCEu 1.12.2 (GT Lite): auto-build with coil tier, structure repetition, no-hatch, coil-replace and AE item supply settings.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Codex"],
+    "credits": "Ported from GTMThings by liansishen",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": [
+      "gregtech",
+      "appliedenergistics2"
+    ]
+  }
+]

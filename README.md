@@ -40,11 +40,11 @@ AE 材料供给需要开启相应设置，并使用已绑定网络、具备电�
 
 ## 下载与源码
 
-发布后，文件将提供在本仓库的 [Releases](https://github.com/Heartlesx/GTM-Advanced-Terminal/releases) 页面。
+1.12.2 测试版文件提供在本仓库的 [Releases](https://github.com/Heartlesx/GTM-Advanced-Terminal/releases) 页面。
 
 分发编译后的 JAR 时，请同时提供对应版本的源码包，或可下载的对应源码链接，并保留许可证和来源说明。源码包包含源码、资源和构建文件，不包含游戏文件或第三方依赖 JAR。
 
-当前仓库正在整理，源码和发布文件将后续上传。
+1.12.2 版源码位于 [`forge-1.12.2`](forge-1.12.2)，[中文构建与安装说明](forge-1.12.2/README.md)介绍所需环境、依赖及测试状态。1.20.1 版源码和发布文件尚未上传。
 
 ## 测试状态
 

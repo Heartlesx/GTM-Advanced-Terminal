@@ -1,0 +1,39 @@
+GTM Advanced Terminal - Minecraft Forge 1.12.2
+
+This third-party derivative is distributed under the GNU Lesser General
+Public License, version 3 (LGPL-3.0). See LICENSE and COPYING for the full
+LGPLv3 and GPLv3 texts. It is not an official GTMThings release.
+
+Upstream: GTMThings 1.6.0, by liansishen
+https://github.com/liansishen/GTMThings
+
+The terminal functionality was extracted into a separate Minecraft 1.20.1
+mod, then reimplemented for GTCEu on Minecraft 1.12.2. The original advanced
+terminal texture and animation resource are retained. Upstream authorship
+and applicable copyright notices remain with their respective holders.
+
+Upstream authorization:
+https://github.com/liansishen/GTMThings/issues/127
+https://github.com/liansishen/GTMThings/issues/127#issuecomment-5870569378
+In response to the questions in this issue, repository owner liansishen
+confirmed that LGPLv3.0 covers the terminal code and texture resources and
+permits distribution of the independent and 1.12.2 ported versions under
+LGPLv3, including sharing JARs and public downloads.
+
+Changes from upstream, as of 2026-09-28:
+- Standalone mod ID and registration: gtmadvancedterminal.
+- Reimplemented item, settings UI, pattern building and AE supply for 1.12.2.
+- Adapted recipe, model paths and translations for the target version.
+- Corrected repeated-section placement and no-hatch candidate filtering.
+- Added staged optional structures and mirror layout settings.
+- Added AE wireless terminal lookup in the optional baubles inventory.
+- Added build diagnostics and preserved the original terminal texture.
+- Added license texts, this notice and a corresponding-source archive.
+
+The distribution includes no bundled Minecraft, Forge, GTCEu, AE2,
+ModularUI, CodeChickenLib or EnderCore binaries. Those projects have their
+own licenses and are supplied separately by the user.
+
+When sharing the compiled JAR, also provide its matching source archive
+and retain these license and attribution files. See DISTRIBUTION.md for
+source build instructions and the current testing status.

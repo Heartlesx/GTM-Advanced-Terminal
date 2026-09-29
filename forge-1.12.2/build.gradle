@@ -1,0 +1,113 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+
+version = mod_version
+group = mod_group_id
+archivesBaseName = mod_id
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+    // 1.12.2 用 MCP 命名，社区标准是 stable 39。
+    mappings channel: 'stable', version: '39-1.12'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+            workingDirectory project.file('run-server')
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net/' }
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // ForgeGradle 3 + Forge 1.12.2-14.23.5.2854+ 的已知问题：新版 mergetool 会让 FML 在
+    // 注册自己的网络通道时抛 NullPointerException。只在开发环境（runClient/runServer）出现，
+    // 不影响产出的 jar。必须配合删除 caches/forge_gradle/.../forge/<版本>_mapped_* 缓存。
+    implementation("net.minecraftforge:mergetool:0.2.3.3") { force = true }
+
+    // 以下 jar 取自目标整合包 GT Lite 的 mods 目录，仅编译期使用，运行时由整合包提供。
+    compileOnly files('libs/gregtech-1.12.2-2901.jar')
+    compileOnly files('libs/modularui-3.0.6.jar')
+    compileOnly files('libs/ae2-uel-v0.56.7.jar')
+    compileOnly files('libs/CodeChickenLib-1.12.2-3.2.3.358-universal.jar')
+    // GT 的 MetaItem 实现了 EnderCore 的 IOverlayRenderAware，继承它需要该接口在编译期可见。
+    compileOnly files('libs/EnderCore-1.12.2-0.5.78.jar')
+    // GT 的 MetaItem/MetaValueItem 签名带 org.jetbrains.annotations 注解，编译期需要该类库
+    // （取自本机 Gradle 4.9 发行版自带的 annotations-13.0.jar，不联网）。
+    compileOnly files('libs/annotations-13.0.jar')
+}
+
+// mcmod.info 里的 ${version} / ${mcversion} 需要在这里展开。
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft_version
+    filesMatching('mcmod.info') {
+        expand 'version': project.version, 'mcversion': project.minecraft_version
+    }
+}
+
+jar {
+    from(project.projectDir) {
+        include 'LICENSE', 'COPYING', 'NOTICE', 'DISTRIBUTION.md'
+    }
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.version,
+                'Implementation-Vendor'   : mod_authors,
+        ])
+    }
+}
+jar.finalizedBy('reobfJar')
+
+task sourceDistribution(type: Zip) {
+    archiveName = "${mod_id}-${mod_version}-sources.zip"
+    destinationDir = project.file('mods输出')
+    from(project.projectDir) {
+        include 'src/**', 'gradle/**', 'gradlew', 'gradlew.bat'
+        include 'build.gradle', 'settings.gradle', 'gradle.properties'
+        include 'LICENSE', 'COPYING', 'NOTICE', 'DISTRIBUTION.md'
+    }
+}
+
+// 重混淆完成后复制一份到工程目录的 mods输出 下，方便手工放进整合包（不自动写进游戏目录）。
+// 用复制而不是把它设成 jar 的输出目录：否则 Gradle 的 stale output 清理会把这里的历史 jar 删掉。
+tasks.whenTaskAdded { task ->
+    if (task.name == 'reobfJar') {
+        task.doLast {
+            project.copy {
+                from project.tasks.jar.archivePath
+                into project.file('mods输出')
+            }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
